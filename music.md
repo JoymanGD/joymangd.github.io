@@ -3,6 +3,11 @@ layout: page
 title: "Music"
 ---
 
-{% for post in site.categories.music %}
-  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+{% assign posts = site.categories.music %}
+{% if posts and posts.size > 0 %}
+{% for post in posts %}
+  <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
 {% endfor %}
+{% else %}
+<p>No posts yet.</p>
+{% endif %}
