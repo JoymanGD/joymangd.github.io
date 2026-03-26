@@ -316,6 +316,59 @@ a {
   text-decoration: none;
 }
 
+.contact-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  max-width: 560px;
+}
+
+.contact-form label {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(34, 52, 74, 0.12);
+  border-radius: 16px;
+  color: var(--text);
+  font: inherit;
+  padding: 12px 14px;
+  width: 100%;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(47, 110, 169, 0.45);
+  box-shadow: 0 0 0 4px rgba(47, 110, 169, 0.12);
+  outline: none;
+}
+
+.contact-form button {
+  background: linear-gradient(135deg, #3a7cb8, #235682);
+  border: 0;
+  border-radius: 999px;
+  color: #f5fbff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  justify-self: start;
+  margin-top: 6px;
+  padding: 11px 18px;
+}
+
+.contact-form button:hover {
+  filter: brightness(1.05);
+}
+
 .prose p a,
 .post-card a,
 .post-nav a,
@@ -387,15 +440,125 @@ a {
   padding: 18px 6px 0;
 }
 
+.cv-shell {
+  display: grid;
+  gap: 22px;
+}
+
+.cv-hero,
+.cv-card {
+  backdrop-filter: blur(14px);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.cv-hero {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 28px;
+}
+
+.cv-hero h1,
+.cv-card h2,
+.cv-role h3 {
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.cv-hero h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.cv-summary {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 12px 0 0;
+  max-width: 62ch;
+}
+
+.cv-actions {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cv-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cv-card {
+  padding: 24px;
+}
+
+.cv-card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.cv-list {
+  display: grid;
+  gap: 10px;
+  line-height: 1.7;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cv-list a {
+  color: var(--accent-deep);
+}
+
+.cv-timeline {
+  display: grid;
+  gap: 18px;
+}
+
+.cv-role + .cv-role {
+  border-top: 1px solid rgba(34, 52, 74, 0.08);
+  padding-top: 18px;
+}
+
+.cv-role-head {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cv-role h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cv-role-head p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
 @media (max-width: 860px) {
   .site-header,
   .section-header,
-  .post-header {
+  .post-header,
+  .cv-hero,
+  .cv-role-head {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .hero-grid {
+  .hero-grid,
+  .cv-grid {
     grid-template-columns: 1fr;
   }
 }
