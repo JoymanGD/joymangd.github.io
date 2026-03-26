@@ -3,8 +3,6 @@ layout: default
 title: "Researching"
 ---
 
-## Researching
-
 {% assign posts = site.posts | where_exp: "post", "post.categories contains 'researching'" %}
 {% if posts and posts.size > 0 %}
 {% for post in posts %}

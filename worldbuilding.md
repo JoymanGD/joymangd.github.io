@@ -3,8 +3,6 @@ layout: default
 title: "WorldBuilding"
 ---
 
-## WorldBuilding
-
 {% assign posts = site.posts | where_exp: "post", "post.categories contains 'worldbuilding'" %}
 {% if posts and posts.size > 0 %}
 {% for post in posts %}

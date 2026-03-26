@@ -3,8 +3,6 @@ layout: default
 title: "Music"
 ---
 
-## Music
-
 {% assign posts = site.posts | where_exp: "post", "post.categories contains 'music'" %}
 {% if posts and posts.size > 0 %}
 {% for post in posts %}
