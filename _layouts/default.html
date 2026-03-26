@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About me | </title>
-    <meta name="description" content="">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | escape }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   </head>
-  <body class="home-page">
+  <body class="{% if page.url == '/' %}home-page{% else %}inner-page{% endif %}">
     <div class="page-bg">
       <div class="orb orb-one"></div>
       <div class="orb orb-two"></div>
@@ -19,7 +19,7 @@
 
     <div class="site-shell">
       <header class="site-header">
-        <a class="brand" href="/">
+        <a class="brand" href="{{ '/' | relative_url }}">
           <span class="brand-mark">V</span>
           <span class="brand-text">
             <strong>Joyman (Vlad)</strong>
@@ -28,19 +28,19 @@
         </a>
 
         <nav class="site-nav" aria-label="Primary">
-          <a href="/gamedev">GameDev</a>
-          <a href="/worldbuilding">Worldbuilding</a>
-          <a href="/researching">Research</a>
-          <a href="/math">Math</a>
-          <a href="/music">Music</a>
+          <a href="{{ '/gamedev' | relative_url }}">GameDev</a>
+          <a href="{{ '/worldbuilding' | relative_url }}">Worldbuilding</a>
+          <a href="{{ '/researching' | relative_url }}">Research</a>
+          <a href="{{ '/math' | relative_url }}">Math</a>
+          <a href="{{ '/music' | relative_url }}">Music</a>
         </nav>
       </header>
 
       <main class="content-frame">
-        
+        {% if page.url == '/' %}
           <section class="hero-panel">
             <p class="eyebrow">Personal space</p>
-            <h1>About me</h1>
+            <h1>{{ page.title }}</h1>
             <p class="hero-copy">Work, interests, notes, and experiments across graphics, games, research, and creative projects.</p>
             <div class="hero-grid">
               <article>
@@ -58,26 +58,11 @@
             </div>
           </section>
           <section class="page-card prose">
-            <p>Hi.</p>
-
-<p>My name is Vlad. I am a rendering engineer from Estonia. I started my career path as a game developer in Unity, then Unreal Engine, and now I work on a proprietary game engine under NDA while also building <a href="https://github.com/JoymanGD/Waldem">my own one</a>.</p>
-
-<p>I have broad experience across the game development pipeline, from game design, 3D modeling, and sound design to technical research, market research, analytics, and more. Rendering is still the area where I go deepest.</p>
-
-<p>Besides that, I am interested in a few other directions too.</p>
-
-<h2 id="i-do">I do:</h2>
-
-<ul>
-  <li><a href="/worldbuilding">Worldbuilding</a></li>
-  <li><a href="/gamedev">Game development</a></li>
-  <li><a href="/researching">Researching</a></li>
-  <li><a href="/math">Math</a></li>
-  <li><a href="/music">Music</a></li>
-</ul>
-
+            {{ content }}
           </section>
-        
+        {% else %}
+          {{ content }}
+        {% endif %}
       </main>
     </div>
   </body>

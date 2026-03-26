@@ -2,6 +2,36 @@
 layout: default
 ---
 
-{{ content }}
+{% assign category = page.name | split: '.' | first %}
+{% assign posts = site.posts | where_exp: "post", "post.categories contains category" %}
 
-<p><small><a href="{{ '/' | relative_url }}">Home</a></small></p>
+<section class="section-shell">
+  <div class="section-header">
+    <div class="section-header-text">
+      <p class="eyebrow">Category</p>
+      <h1>{{ page.title }}</h1>
+      {% if content != "" %}
+        <p>{{ content | strip_html | strip_newlines }}</p>
+      {% else %}
+        <p>A focused collection of notes and posts from this part of the site.</p>
+      {% endif %}
+    </div>
+    <a class="chip-link" href="{{ '/' | relative_url }}">Back home</a>
+  </div>
+
+  {% if posts and posts.size > 0 %}
+    <div class="post-grid">
+      {% for post in posts %}
+        <a class="post-card" href="{{ post.url | relative_url }}">
+          <p class="card-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      No posts yet.
+    </div>
+  {% endif %}
+</section>
